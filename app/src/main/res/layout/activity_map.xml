@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.MapActivity">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"
+        tools:context=".ui.MapActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+    <LinearLayout
+        android:id="@+id/search_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/search_box_margin"
+        android:background="@color/white">
+        <ImageView
+            android:id="@+id/search_ic"
+            android:src="@drawable/ic_location_searching_black_24dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/search_icon_padding"/>
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/location_search_text"
+            android:textColor="@color/common_google_signin_btn_text_dark"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_vertical"
+            android:imeOptions="actionSearch"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_places_cnt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        tools:text="@string/test_text"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:padding="@dimen/tv_cnt_padding"
+        android:textStyle="bold"
+        android:textSize="@dimen/tv_places_cnt_text_size"
+        android:textColor="@color/white"/>
+
+    <ImageView
+        android:id="@+id/iv_gps"
+        android:src="@drawable/ic_gps_fixed_black_24dp"
+        android:layout_width="@dimen/controls_dimen"
+        android:layout_height="@dimen/controls_dimen"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/controls_margin"
+        android:layout_below="@id/search_box"/>
+
+    <ImageView
+        android:id="@+id/iv_add_location"
+        android:src="@drawable/ic_add_location_black_24dp"
+        android:layout_width="@dimen/controls_dimen"
+        android:layout_height="@dimen/controls_dimen"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/controls_margin"
+        android:layout_below="@id/iv_gps"/>
+</RelativeLayout>
