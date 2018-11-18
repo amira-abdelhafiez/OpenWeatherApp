@@ -20,6 +20,9 @@ public class DbContract {
         public static final String ID_COL = "_id";
         public static final String NAME_COL = "name";
         public static final String TEMP_COL = "temperature";
+        public static final String PRESSURE_COL = "pressure";
+        public static final String HUMIDITY_COL = "humidity";
+        public static final String CLOUDS_COL = "clouds";
         public static final String LATITUDE_COL = "latitude";
         public static final String LONGITUDE_COL = "longitude";
     }

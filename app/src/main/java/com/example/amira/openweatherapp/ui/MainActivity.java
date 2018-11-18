@@ -29,6 +29,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , PlacesAdapter.OnItemClickHandler{
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private static final String CURRENT_PLACE_ID = "placeId";
     private static final int GET_DATA_LOADER = 543;
     private Cursor mDataCursor;
 
@@ -99,19 +100,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void showLoadingBar(){
-
+        mLoadingBar.setVisibility(View.VISIBLE);
+        mPLacesRecyclerView.setVisibility(View.INVISIBLE);
     }
 
     private void hideLoadingBar(){
-
+        mLoadingBar.setVisibility(View.INVISIBLE);
+        mPLacesRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private void showEmptyMessage(){
-
+        mPLacesRecyclerView.setVisibility(View.INVISIBLE);
+        mEmptyTextView.setVisibility(View.VISIBLE);
     }
 
     private void hideEmptyMessage(){
-
+        mPLacesRecyclerView.setVisibility(View.VISIBLE);
+        mEmptyTextView.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -122,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 @Override
                 protected void onStartLoading() {
                     super.onStartLoading();
+                    hideEmptyMessage();
+                    showLoadingBar();
                     if(cursor != null){
                         deliverResult(cursor);
                     }else{
@@ -154,9 +161,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         int id = loader.getId();
+        hideLoadingBar();
         if(id == GET_DATA_LOADER){
-            mDataCursor = data;
-            mAdapter.setmCursor(data);
+            if(data == null || data.getCount() < 1){
+                showEmptyMessage();
+            }else{
+                mDataCursor = data;
+                mAdapter.setmCursor(data);
+            }
+
         }else{
             Log.d(LOG_TAG , "Invalid Loader Id " + id);
         }
@@ -170,12 +183,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onClick(int position) {
         Intent intent = new Intent(MainActivity.this , DetailActivity.class);
+        int CurrentId = 1;
+        if(mDataCursor.moveToPosition(position)){
+
+        }
         startActivity(intent);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(LOG_TAG , "Called");
         getSupportLoaderManager().restartLoader(GET_DATA_LOADER, null  , this);
     }
 }

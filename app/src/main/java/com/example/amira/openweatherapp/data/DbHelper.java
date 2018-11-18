@@ -18,8 +18,11 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         final String CREATE_TABLE_PLACES = "CREATE TABLE " + DbContract.OpenWeatherDbEntry.TABLE_NAME
                 + " ( " + DbContract.OpenWeatherDbEntry.ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT ,"
-                + DbContract.OpenWeatherDbEntry.NAME_COL + " TEXT NOT NULL ,"
-                + DbContract.OpenWeatherDbEntry.TEMP_COL + " REAL NOT NULL ,"
+                + DbContract.OpenWeatherDbEntry.NAME_COL + " TEXT ,"
+                + DbContract.OpenWeatherDbEntry.TEMP_COL + " REAL ,"
+                + DbContract.OpenWeatherDbEntry.PRESSURE_COL + " REAL ,"
+                + DbContract.OpenWeatherDbEntry.HUMIDITY_COL + " REAL ,"
+                + DbContract.OpenWeatherDbEntry.CLOUDS_COL + " REAL ,"
                 + DbContract.OpenWeatherDbEntry.LATITUDE_COL + " REAL NOT NULL , "
                 + DbContract.OpenWeatherDbEntry.LONGITUDE_COL + " REAL NOT NULL )";
 

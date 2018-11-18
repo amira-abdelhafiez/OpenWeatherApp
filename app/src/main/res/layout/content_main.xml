@@ -13,10 +13,14 @@
         android:id="@+id/tv_empty_list_text"
         android:text="@string/empty_txt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="invisible"/>
 
     <ProgressBar
         android:id="@+id/pb_loading_places"
         android:layout_width="15dp"
-        android:layout_height="15dp" />
+        android:layout_height="15dp"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
 </FrameLayout>

@@ -30,7 +30,7 @@
             android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/search_icon_padding"/>
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
