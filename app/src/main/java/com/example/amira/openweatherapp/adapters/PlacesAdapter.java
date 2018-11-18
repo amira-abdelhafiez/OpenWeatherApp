@@ -44,8 +44,10 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
     @Override
     public void onBindViewHolder(PlaceViewHolder holder, int position) {
         if(mCursor != null && mCursor.moveToPosition(position)){
-            holder.mPlaceTemperature.setText(mCursor.getString(mCursor.getColumnIndex(DbContract.OpenWeatherDbEntry.TEMP_COL)));
-            holder.mPlaceName.setText(mCursor.getString(mCursor.getColumnIndex(DbContract.OpenWeatherDbEntry.NAME_COL)));
+            //holder.mPlaceTemperature.setText(mCursor.getString(mCursor.getColumnIndex(DbContract.OpenWeatherDbEntry.TEMP_COL)));
+            String placeName = mCursor.getString(mCursor.getColumnIndex(DbContract.OpenWeatherDbEntry.NAME_COL));
+
+            holder.mPlaceName.setText(placeName);
         }else{
             Log.d(LOG_TAG , "Null Cursor");
         }
@@ -58,12 +60,11 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
 
     class PlaceViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView mPlaceName, mPlaceTemperature;
+        TextView mPlaceName;
 
         public PlaceViewHolder(View itemView) {
             super(itemView);
             mPlaceName = itemView.findViewById(R.id.tv_place_name);
-            mPlaceTemperature = itemView.findViewById(R.id.tv_temperature);
             itemView.setOnClickListener(this);
         }
 

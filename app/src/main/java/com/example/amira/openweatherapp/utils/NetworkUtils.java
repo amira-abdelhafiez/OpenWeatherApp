@@ -18,6 +18,7 @@ public class NetworkUtils {
     private static final String API_KEY_2 = "2061db6b7baa4603bd70ee761b02f0c3";
 
     private static final String BASE_URL = "api.openweathermap.org/data/2.5/forecast/daily";
+    private static final String BASE_SAMPLES_URL = "https://samples.openweathermap.org/data/2.5/forecast/daily";
 
     private static final String LAT_PARAM = "lat";
     private static final String LONG_PARAM = "lon";
@@ -26,8 +27,10 @@ public class NetworkUtils {
 
 
     // Forms and Returns the query Url from the incoming data
-    public URL getDataQueryUrl(String latValue , String longValue , String daysCount){
-        Uri uri = Uri.parse(BASE_URL).buildUpon()
+    public static URL getDataQueryUrl(String latValue , String longValue , String daysCount){
+        //Using Sample base URL.
+        //TODO : If the API key is valid Please Replace BASE_SAMPLES_URL with the BASE_URL
+        Uri uri = Uri.parse(BASE_SAMPLES_URL).buildUpon()
                 .appendQueryParameter(LAT_PARAM , latValue)
                 .appendQueryParameter(LONG_PARAM , longValue)
                 .appendQueryParameter(DAYS_COUNT_PARAM , daysCount)

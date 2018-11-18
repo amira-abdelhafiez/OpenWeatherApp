@@ -3,6 +3,10 @@
     <string name="action_settings">Settings</string>
     <string name="empty_txt">No Places Added</string>
     <string name="test_text">Text4</string>
-    <string name="google_maps_key">AIzaSyAjVf8eID7M3nPhQiJjCZFkoTM2YSQe7G0</string>
     <string name="location_search_text">Enter Address, City</string>
+    <string name="user_detail_activity_message">Parsed Json Data Displayed Here</string>
+    <string name="tv_user_message_2">This Activity was not part of the Task requiremens So It\'s not implemented completely, Just for displaying Data</string>
+    <string name="temp_lbl">Temperature</string>
+    <string name="pressure_lbl">Pressure</string>
+    <string name="humidity_lbl">Humidity</string>
 </resources>

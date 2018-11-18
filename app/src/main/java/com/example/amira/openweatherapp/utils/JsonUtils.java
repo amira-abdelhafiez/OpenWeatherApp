@@ -51,7 +51,6 @@ public class JsonUtils {
                 city.setLatitude(cityJsonObject.optDouble(LATITUDE));
                 city.setLongitude(cityJsonObject.optDouble(LONGITUDE));
                 city.setName(cityJsonObject.optString(CITY_NAME));
-
                 // Parsing Days Weather Data
                 JSONArray weatherDaysArray = obj.getJSONArray(LIST);
                 int len = weatherDaysArray.length();

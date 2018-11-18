@@ -3,7 +3,7 @@
     <dimen name="content_margin">8dp</dimen>
     <dimen name="rv_item_margin">8dp</dimen>
     <dimen name="rv_item_image_dimen">50dp</dimen>
-    <dimen name="tv_place_name_text_size">20sp</dimen>
+    <dimen name="tv_place_name_text_size">18sp</dimen>
     <dimen name="tv_temperature_text_size">30sp</dimen>
     <dimen name="tv_places_cnt_text_size">18sp</dimen>
     <dimen name="search_icon_padding">10dp</dimen>
@@ -11,4 +11,5 @@
     <dimen name="search_box_margin">10dp</dimen>
     <dimen name="controls_margin">10dp</dimen>
     <dimen name="controls_dimen">40dp</dimen>
+    <dimen name="tv_detail_weather_margin">10dp</dimen>
 </resources>

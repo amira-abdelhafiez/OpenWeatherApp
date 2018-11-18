@@ -22,6 +22,7 @@ import com.example.amira.openweatherapp.adapters.PlacesAdapter;
 import com.example.amira.openweatherapp.data.DbContract;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.maps.model.LatLng;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +30,10 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> , PlacesAdapter.OnItemClickHandler{
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
+    private static final String BUNDLE_ID = "bundle";
     private static final String CURRENT_PLACE_ID = "placeId";
+    private static final String POSITION_ID = "position";
+    private static final String TITLE_ID = "title";
     private static final int GET_DATA_LOADER = 543;
     private Cursor mDataCursor;
 
@@ -183,9 +187,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onClick(int position) {
         Intent intent = new Intent(MainActivity.this , DetailActivity.class);
-        int CurrentId = 1;
-        if(mDataCursor.moveToPosition(position)){
+        if(mDataCursor.moveToPosition(position)) {
+            LatLng latLng = new LatLng(mDataCursor.getDouble(mDataCursor.getColumnIndex(DbContract.OpenWeatherDbEntry.LATITUDE_COL)), mDataCursor.getDouble(mDataCursor.getColumnIndex(DbContract.OpenWeatherDbEntry.LONGITUDE_COL)));
 
+            Bundle bundle = new Bundle();
+            bundle.putInt(CURRENT_PLACE_ID, mDataCursor.getInt(mDataCursor.getColumnIndex(DbContract.OpenWeatherDbEntry.ID_COL)));
+            bundle.putParcelable(POSITION_ID, latLng);
+            bundle.putString(TITLE_ID, mDataCursor.getString(mDataCursor.getColumnIndex(DbContract.OpenWeatherDbEntry.NAME_COL)));
+            intent.putExtra(BUNDLE_ID , bundle);
         }
         startActivity(intent);
     }
